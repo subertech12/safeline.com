@@ -1,0 +1,16 @@
+{
+  "name": "Police Emergency App",
+  "short_name": "SecureServe",
+  "description": "App-ka Police Emergency",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#007BFF",
+  "theme_color": "#007BFF",
+  "icons": [
+    {
+      "src": "assets/police-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+} 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Emergency App</title>
+    <link rel="icon" type="image/png" href="assets/police.png">
+    <link rel="apple-touch-icon" href="assets/police.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007BFF">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <span>Police Emergency</span>
+        </div>
+        <div class="user-info hidden">
+            <span id="userName"></span>
+            <img id="userPhoto" class="hidden" alt="Officer Photo">
+            <button onclick="app.handleLogout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Ka bax
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Registration Form -->
+        <form id="registrationForm" class="auth-form" action="/register" method="POST">
+        <form id="registrationForm" class="auth-form">
+            <h2>Is Diiwaangeli</h2>
+            
+            <div class="form-group">
+                <label for="role">Dooro Doorkaaga</label>
+                <select id="role" name="role" required>
+                    <option value="">Dooro</option>
+                    <option value="citizen">Qof Caadi ah</option>
+                    <option value="officer">Askari</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Magaca oo Buuxa</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telefoon Lambarka</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email-ka</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password-ka</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div id="officerFields" class="hidden">
+                <div class="form-group">
+                    <label for="photo">Sawirka</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <div id="photoPreview" class="photo-preview hidden"></div>
+                </div>
+            </div>
+
+            <button type="submit">Is Diiwaangeli</button>
+        </form>
+
+        <!-- Citizen Dashboard -->
+        <div id="citizenDashboard" class="dashboard hidden">
+            <!-- Police Responses Section -->
+            <section class="responses-section">
+                <h2>Jawaabaha Police-ka</h2>
+                <div id="policeResponses" class="responses-list">
+                    <!-- Police responses will be added here dynamically -->
+                </div>
+            </section>
+
+            <!-- Emergency Calls Section -->
+            <section class="emergency-section">
+                <h2>Wicitaanada Degdega ah</h2>
+                <div class="emergency-buttons">
+                    <button class="emergency-btn police" data-number="999">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Police</span>
+                    </button>
+                    <button class="emergency-btn ambulance" data-number="555">
+                        <i class="fas fa-ambulance"></i>
+                        <span>Ambalaas</span>
+                    </button>
+                    <button class="emergency-btn fire" data-number="888">
+                        <i class="fas fa-fire-extinguisher"></i>
+                        <span>Dab-damis</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Report Incident Section -->
+            <section class="report-section">
+                <h2>Soo Sheeg Dhacdo</h2>
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="incidentType">Nooca Dhacdada</label>
+                        <select id="incidentType" required>
+                            <option value="">Dooro</option>
+                            <option value="accident">Shil</option>
+                            <option value="murder">Dil</option>
+                            <option value="fight">Dagaal</option>
+                            <option value="theft">Xatooyad</option>
+                            <option value="other">Kale</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="details">Faahfaahin</label>
+                        <textarea id="details" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incidentPhoto">Sawir (haddii uu jiro)</label>
+                        <input type="file" id="incidentPhoto" accept="image/*">
+                        <div id="incidentPhotoPreview" class="photo-preview hidden"></div>
+                    </div>
+
+                    <button type="submit">Dir Warbixinta</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Officer Dashboard -->
+        <div id="officerDashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <h2>Warbixinaha iyo Wicitaanada</h2>
+                <div class="filter-controls">
+                    <select id="filterType">
+                        <option value="all">Dhamaan</option>
+                        <option value="call">Wicitaano</option>
+                        <option value="report">Warbixino</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="messagesList" class="messages-list">
+                <!-- Messages will be dynamically added here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
